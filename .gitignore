@@ -1,0 +1,6 @@
+.env
+.exe
+.out
+.out
+/go.sum
+/go.mod
