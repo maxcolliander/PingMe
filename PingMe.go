@@ -29,13 +29,11 @@ func main() {
 	}
 	defer resp.Body.Close()
 
-	// Read the response body
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatal("Error reading the response body: ", err)
 	}
 
-	// Print the raw response body (or you can unmarshal it into a struct)
 	fmt.Println("Response: ", string(body))
 }
 
