@@ -3,6 +3,7 @@ package utils
 import (
 	"context"
 	"log"
+	"fmt"
 	"github.com/go-deepseek/deepseek"
 	"github.com/go-deepseek/deepseek/request"
 )
@@ -23,6 +24,7 @@ func NewDeepSeekClient() *DeepSeekClient {
 		log.Fatal("Error creating DeepSeek client: ", err)
 	}
 
+	fmt.Println("Connected to DeepSeek")
 	return &DeepSeekClient{
 		client: client,
 	}

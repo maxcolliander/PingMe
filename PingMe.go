@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"PingMe/utils"
 	"log"
-	"net/http"
-	"io/ioutil"
 )
 
 func main() {
@@ -13,44 +11,36 @@ func main() {
 
 	accessToken := utils.GetEnv("THREADS_ACCESS_TOKEN")
 
-	url := "https://graph.threads.net/v1.0/me?fields=id,name"
-
-	req, err := http.NewRequest("GET", url, nil)
+	ThreadsClient, err := threadsContact(accessToken)
 
 	if err != nil {
-		log.Fatal("Error creating the request", err)
+		log.Fatalf("Failed to connect to Threads API: %w", err)
 	}
 
-	req.Header.Add("Authorization", "Bearer "+accessToken)
-
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		log.Fatal("Error making the request: ", err)
-	}
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal("Error reading the response body: ", err)
-	}
-
-	fmt.Println("Response: ", string(body))
+	fmt.Printf("User ID: %v, Name: %s\n", ThreadsClient.ID, ThreadsClient.Name)
 	response := deepSeekContact()
-	postData := map[string]string{
-		"message": response,
+	fmt.Println("Message to post:", response)
+	success, err := utils.PostToThreads(ThreadsClient, accessToken, response)
+	if err != nil {
+		log.Fatalf("Error posting to Threads: %v", err)
 	}
+	if success {
+		fmt.Println("User ID: %v, Posted: %t", ThreadsClient.ID, response )
+	}
+}
+
+func threadsContact(accessToken string) (*utils.ThreadsClient, error) {
+	return utils.ConnectThreads(accessToken)
 }
 
 func deepSeekContact() string {
 	client := utils.NewDeepSeekClient()
 	response, err := client.Chat("Complete the following statement, make sure to make it existential: In the Pond I'd be pondering:")
 	if err != nil {
-		log.Fatalf("Error sending message: %v", err)
+		log.Fatalf("Error sending message: %w", err)
 	}
 	return response
 }
 
-func post(id string, message string) boolean {
 
-}
 
