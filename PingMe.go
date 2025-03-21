@@ -17,7 +17,7 @@ func main() {
 		log.Fatalf("Failed to connect to Threads API: %w", err)
 	}
 
-	fmt.Printf("User ID: %v, Name: %s\n", ThreadsClient.ID, ThreadsClient.Name)
+	fmt.Printf("User ID: %v\n", ThreadsClient.ID)
 	response := deepSeekContact()
 	fmt.Println("Message to post:", response)
 	success, err := utils.PostToThreads(ThreadsClient, accessToken, response)
@@ -35,7 +35,7 @@ func threadsContact(accessToken string) (*utils.ThreadsClient, error) {
 
 func deepSeekContact() string {
 	client := utils.NewDeepSeekClient()
-	response, err := client.Chat("Complete the following statement, make sure to make it existential: In the Pond I'd be pondering:")
+	response, err := client.Chat("Complete the following statement: In the Pond I'd be pondering:")
 	if err != nil {
 		log.Fatalf("Error sending message: %w", err)
 	}

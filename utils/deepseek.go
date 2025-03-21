@@ -39,6 +39,10 @@ func (d *DeepSeekClient) Chat(message string) (string, error) {
 				Role: "user",
 				Content: message,
 			},
+			{
+				Role: "system",
+				Content: "You are a philosophy frog",
+			},
 		},
 	}
 	chatResp, err := d.client.CallChatCompletionsChat(context.Background(), chatReq)

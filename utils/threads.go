@@ -11,7 +11,6 @@ import (
 
 type ThreadsClient struct {
 	ID string `json:"id"`
-	Name string `json:"name"`
 }
 
 func ConnectThreads(accessToken string) (*ThreadsClient, error) {
@@ -37,7 +36,7 @@ func ConnectThreads(accessToken string) (*ThreadsClient, error) {
 		return nil, fmt.Errorf("Error parsing JSON response: %w", err)
 	}
 
-	fmt.Printf("Connected to Threads: ID = %v, Name = %s\n", client.ID, client.Name)
+	fmt.Printf("Connected to Threads: ID = %v\n", client.ID)
 	return &client, nil
 }
 
