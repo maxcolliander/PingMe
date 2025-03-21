@@ -35,15 +35,18 @@ func main() {
 	}
 
 	fmt.Println("Response: ", string(body))
-	deepSeekContact()
+	response := deepSeekContact()
+	postData := map[string]string{
+		"message": response,
+	}
 }
 
-func deepSeekContact() {
+func deepSeekContact() string {
 	client := utils.NewDeepSeekClient()
-	response, err := client.Chat("Complete the following statement: In the Pond I'd be pondering:")
+	response, err := client.Chat("Complete the following statement, make sure to make it existential: In the Pond I'd be pondering:")
 	if err != nil {
 		log.Fatalf("Error sending message: %v", err)
 	}
-	fmt.Println("DeepSeek Response: ", response)
+	return response
 }
 
