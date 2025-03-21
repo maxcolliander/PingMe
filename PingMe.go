@@ -50,3 +50,7 @@ func deepSeekContact() string {
 	return response
 }
 
+func post(id string, message string) boolean {
+
+}
+
