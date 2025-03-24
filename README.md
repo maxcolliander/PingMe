@@ -46,7 +46,7 @@ go run PingMe.go
 ```
 
 ## Troubleshooting
-- Sometimes it gives an alternative response which should not be posted (NOT YET FIXED)
+- Sometimes it gives an alternative response which should not be posted (FIXED: Added a remove alternative function)
 
 ## Licence
 This project is licensed under the MIT License - see the LICENSE file for details

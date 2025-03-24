@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"PingMe/utils"
 	"log"
+	"strings"
 )
 
 func main() {
@@ -38,6 +39,18 @@ func deepSeekContact() string {
 	response, err := client.Chat("Complete the following statement: In the Pond I'd be pondering:")
 	if err != nil {
 		log.Fatalf("Error sending message: %w", err)
+	}
+
+	// Remove alternative if it exists
+	cleanedResponse := removeAlternative(response)
+	return cleanedResponse
+}
+
+func removeAlternative(response string) string {
+	delimit := "(Alternatively,"
+	index := strings.Index(response, delimit)
+	if index != -1 {
+		return strings.TrimSpace(response[:index])
 	}
 	return response
 }
