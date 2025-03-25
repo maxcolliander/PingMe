@@ -83,13 +83,13 @@ func sendPost() {
 
 func postNow(client *utils.ThreadsClient, accessToken, response string) {
 	fmt.Println("POSTING: ", response)
-	// success, err := utils.PostToThreads(client, accessToken, response)
-	// if err != nil {
-	// 	log.Fatalf("Error posting to Threads: %v", err)
-	// }
-	// if success {
-	// 	fmt.Println("User ID: %v, Posted: %s", client.ID, response )
-	// }
+	success, err := utils.PostToThreads(client, accessToken, response)
+	if err != nil {
+		log.Fatalf("Error posting to Threads: %v", err)
+	}
+	if success {
+		fmt.Println("User ID: %v, Posted: %s", client.ID, response )
+	}
 }
 
 func SchedulePost(timeStr string, done chan bool) {
