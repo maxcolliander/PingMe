@@ -3,9 +3,9 @@
 **PingMe** is a bot that automates content posting on **Threads** using AI-generated responses from **DeepSeek**. 
 
 ## Features
-- Auto-post content on Threads
-- AI generated Responses
-- Schedule single Posts
+- Auto-post Content on Threads
+- AI Generated Responses
+- Schedule Single Posts
 
 ## Future Features
 - Schedule Multiple Posts
