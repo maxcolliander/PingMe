@@ -49,7 +49,7 @@ go run PingMe.go (OPTIONAL: time to post in HHMM or YYYYMMDDHHMM format)
 ## Know bugs
 - Sometimes it gives an alternative response which should not be posted (FIXED: Added a remove alternative function)
 - Premature posting
-- Sometimes posts a messy string
+- Sometimes posts a messy string (FIXED: Changed RemoveAlternative function to extract text from the first occurence of " to the second occurence of ")
 
 ## Licence
 This project is licensed under the MIT License - see the LICENSE file for details

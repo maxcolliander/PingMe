@@ -45,12 +45,21 @@ func deepSeekContact() string {
 }
 
 func removeAlternative(response string) string {
-	delimit := "(Alternatively,"
-	index := strings.Index(response, delimit)
-	if index != -1 {
-		return strings.TrimSpace(response[:index])
+	firstIdx := strings.Index(response, `"`)
+
+	if firstIdx == -1 {
+		return strings.TrimSpace(response)
 	}
-	return response
+
+	secondIdx := strings.Index(response[firstIdx + 1:], `"`)
+	if secondIdx == -1 {
+		return strings.TrimSpace(response)
+	}
+	secondIdx += firstIdx + 1
+
+	response = strings.TrimSpace(response[firstIdx + 1 : secondIdx])
+
+	return strings.ReplaceAll(response, "*", "")
 }
 
 
@@ -74,13 +83,13 @@ func sendPost() {
 
 func postNow(client *utils.ThreadsClient, accessToken, response string) {
 	fmt.Println("POSTING: ", response)
-	success, err := utils.PostToThreads(client, accessToken, response)
-	if err != nil {
-		log.Fatalf("Error posting to Threads: %v", err)
-	}
-	if success {
-		fmt.Println("User ID: %v, Posted: %s", client.ID, response )
-	}
+	// success, err := utils.PostToThreads(client, accessToken, response)
+	// if err != nil {
+	// 	log.Fatalf("Error posting to Threads: %v", err)
+	// }
+	// if success {
+	// 	fmt.Println("User ID: %v, Posted: %s", client.ID, response )
+	// }
 }
 
 func SchedulePost(timeStr string, done chan bool) {
