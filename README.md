@@ -4,10 +4,11 @@
 
 ## Features
 - Auto-post content on Threads
-- AI generated responses
+- AI generated Responses
+- Schedule single Posts
 
 ## Future Features
-- Schedule posts (WORK IN PROGRESS)
+- Schedule Multiple Posts
 - Support Image and Video Posts
 - Auto-reply to comments
 
@@ -42,11 +43,12 @@ DEEPSEEK_API_KEY=your_api_key
 
 5. **Run the bot**
 ```sh
-go run PingMe.go
+go run PingMe.go (OPTIONAL: time to post in HHMM or YYYYMMDDHHMM format)
 ```
 
-## Troubleshooting
+## Know bugs
 - Sometimes it gives an alternative response which should not be posted (FIXED: Added a remove alternative function)
+- Premature posting
 
 ## Licence
 This project is licensed under the MIT License - see the LICENSE file for details
