@@ -7,7 +7,7 @@
 - AI generated responses
 
 ## Future Features
-- Schedule posts
+- Schedule posts (WORK IN PROGRESS)
 - Support Image and Video Posts
 - Auto-reply to comments
 
