@@ -46,7 +46,7 @@ DEEPSEEK_API_KEY=your_api_key
 go run PingMe.go (OPTIONAL: time to post in HHMM or YYYYMMDDHHMM format)
 ```
 
-## Know bugs
+## Known bugs
 - Sometimes it gives an alternative response which should not be posted (FIXED: Added a remove alternative function)
 - Premature posting
 - Sometimes posts a messy string (FIXED: Changed RemoveAlternative function to extract text from the first occurence of " to the second occurence of ")
