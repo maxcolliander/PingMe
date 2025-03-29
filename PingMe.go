@@ -34,7 +34,7 @@ func threadsContact(accessToken string) (*utils.ThreadsClient, error) {
 
 func deepSeekContact() string {
 	client := utils.NewDeepSeekClient()
-	response, err := client.Chat("Complete the following statement: In the Pond I'd be pondering:")
+	response, err := client.Chat("Complete the following statement without mentionting lily pads: In the Pond I'd be pondering:")
 	if err != nil {
 		log.Fatalf("Error sending message: %v", err)
 	}
